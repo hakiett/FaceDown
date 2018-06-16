@@ -20,7 +20,7 @@
    [springBoard _simulateLockButtonPress];
     }
     
-  if (arg3 == 0) && screenUp) {
+  if ((arg3 == 0) && screenUp) {
    [springBoard _simulateLockButtonPress];
     }
 }   
