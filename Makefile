@@ -1,6 +1,6 @@
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = PinchyLS
+TWEAK_NAME = FaceDown
 FaceDown_FILES = Tweak.xm
 
 include $(THEOS_MAKE_PATH)/tweak.mk
