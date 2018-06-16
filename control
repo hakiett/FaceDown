@@ -1,0 +1,9 @@
+Package: com.kaitouiet.facedown
+Name: FaceDown
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: Sleep device when turning it facedown, and wake it back up by turning it faceup. Compatible with iOS 11 only
+Maintainer: Kiet Ha
+Author: Kiet Ha
+Section: Tweaks
