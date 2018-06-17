@@ -21,7 +21,7 @@ static BOOL screenUp;
    [((SpringBoard *)[%c(UIApplication) sharedApplication]) _simulateLockButtonPress];
     }
     
-  if ((arg3 == 0) && screenUp) {
+  if ((arg3 == 0) && !screenUp) {
    [((SpringBoard *)[%c(UIApplication) sharedApplication]) _simulateHomeButtonPress];
     }
 }   
