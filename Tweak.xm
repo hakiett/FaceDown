@@ -2,6 +2,9 @@
 @property (nonatomic, readonly) BOOL screenUp;
 @end
 
+@interface SBPocketStateMonitor : NSObject
+@end
+
 @interface SpringBoard
 - (void)_simulateLockButtonPress;
 - (void)_simulateHomeButtonPress;
@@ -9,7 +12,7 @@
 
 %hook SBIdleTimerGlobalCoordinator
 
-- (void)pocketStateMonitor:(id)arg1 pocketStateDidChangeFrom:(long long)arg2 to:(long long)arg3 {
+- (void)pocketStateMonitor:(SBPocketStateMonitor *)arg1 pocketStateDidChangeFrom:(long long)arg2 to:(long long)arg3 {
   
   %orig;
   
