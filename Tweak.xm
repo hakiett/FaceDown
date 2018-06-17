@@ -1,14 +1,15 @@
 @interface SBIdleTimerGlobalCoordinator
-@property (nonatomic, readonly) BOOL screenUp;
 @end
 
 @interface SBPocketStateMonitor : NSObject
 @end
 
-@interface SpringBoard
+@interface SpringBoard : NBObject
 - (void)_simulateLockButtonPress;
 - (void)_simulateHomeButtonPress;
 @end
+
+static BOOL screenUp;
 
 %hook SBIdleTimerGlobalCoordinator
 
@@ -16,15 +17,12 @@
   
   %orig;
   
-  SpringBoard *springBoard = (SpringBoard *)UIApplication.sharedApplication; // filter plist indicates this tweak should only be loaded into SpringBoard
-  BOOL screenUp = self.screenUp;
-
   if ((arg3 == 2) && screenUp) {
-   [springBoard _simulateLockButtonPress];
+   [((SpringBoard *)[%c(UIApplication) sharedApplication]) _simulateLockButtonPress];
     }
     
   if ((arg3 == 0) && screenUp) {
-   [springBoard _simulateLockButtonPress];
+   [((SpringBoard *)[%c(UIApplication) sharedApplication]) _simulateHomeButtonPress];
     }
 }   
 %end
