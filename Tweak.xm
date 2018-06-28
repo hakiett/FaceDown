@@ -1,4 +1,5 @@
 @interface SBIdleTimerGlobalCoordinator
+@property (nonatomic, readonly) BOOL screenUp;
 @end
 
 @interface SBPocketStateMonitor : NSObject
@@ -9,20 +10,22 @@
 - (void)_simulateHomeButtonPress;
 @end
 
-static BOOL screenUp;
-
 %hook SBIdleTimerGlobalCoordinator
 
 - (void)pocketStateMonitor:(SBPocketStateMonitor *)arg1 pocketStateDidChangeFrom:(long long)arg2 to:(long long)arg3 {
   
   %orig;
   
+  SpringBoard *springBoard = (SpringBoard *)UIApplication.sharedApplication; 
+  BOOL screenUp = self.screenUp;
+
   if ((arg3 == 2) && screenUp) {
-   [((SpringBoard *)[%c(UIApplication) sharedApplication]) _simulateLockButtonPress];
+   [springBoard _simulateLockButtonPress];
     }
     
   if ((arg3 == 0) && !screenUp) {
-   [((SpringBoard *)[%c(UIApplication) sharedApplication]) _simulateHomeButtonPress];
+   [springBoard _simulateHomeButtonPress];
     }
-}   
+}  
+
 %end
