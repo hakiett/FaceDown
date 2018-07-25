@@ -5,7 +5,7 @@
 @interface SBPocketStateMonitor : NSObject
 @end
 
-@interface SpringBoard : NBObject
+@interface SpringBoard : NSObject
 - (void)_simulateLockButtonPress;
 - (void)_simulateHomeButtonPress;
 @end
